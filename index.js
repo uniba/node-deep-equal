@@ -90,5 +90,8 @@ function objEquiv(a, b, opts) {
     key = ka[i];
     if (!deepEqual(a[key], b[key], opts)) return false;
   }
+  if (a.constructor.name === 'File' && b.constructor.name === 'File') {
+    if (a.name != b.name || a.size != b.size || a.type != b.type || a.lastModified != b.lastModified) return false;
+  }
   return typeof a === typeof b;
 }
